@@ -5,6 +5,7 @@ import { UserList } from './userlist';
 
 
 export const App=()=> {
+
 //endpoint
 const[endPoint, setEndpoint]=useState("users")
 
@@ -19,9 +20,7 @@ const handleFetch=()=> {
   return (
     <div className="App">
       <header className="App-header">
-
        <p>react</p>
-
 <UserList endPoint={endPoint}/>
     <button onClick={handleFetch}>Click para generar la api</button>
 
