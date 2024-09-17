@@ -1,28 +1,16 @@
 import './App.css';
 import { useState,useEffect } from 'react';
+import { UserList } from './userlist';
 
 
 
 export const App=()=> {
+//endpoint
+const[endPoint, setEndpoint]=useState("users")
 
-const[users, setUsers]=useState([])
-
-const fetchUsers= async()=>{
-try {
-
-  const response= await fetch("https://jsonplaceholder.typicode.com/users")
-  const data= await response.json()
-  setUsers(data)
-  console.log(data  )
-} catch (error) {
-  console.error(error)
-}
-
-}
-
-//puedo hacerlo con el click
+//cambiar el valor de endpoint con click 
 const handleFetch=()=> {
-  fetchUsers()
+  setEndpoint("comments")
 }
 //useffect
 //useEffect(()=>{fetchUsers()},[])
@@ -33,11 +21,10 @@ const handleFetch=()=> {
       <header className="App-header">
 
        <p>react</p>
-    <ul>
-    {users.map(user => <> <li key={user.id}> Nombre: {user.name}</li>  <li>Email: {user.email}</li> <br /></> )}
-    </ul>
 
+<UserList endPoint={endPoint}/>
     <button onClick={handleFetch}>Click para generar la api</button>
+
       </header>
     </div>
   )
